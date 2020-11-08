@@ -9,7 +9,7 @@
  * @author apetit
  */
 public class Grille {
-    String Cellules[][]=new String[6][7];// attribut : tableau nommée Cellules de 6 lignes et 7 colonnes
+    Cellule Cellules[][]=new Cellule[6][7];// attribut : tableau nommée Cellules de 6 lignes et 7 colonnes
    
     
     public boolean ajouterJetonDansColonne (Jetons unJeton,int colonne){
@@ -17,7 +17,7 @@ public class Grille {
             if (Cellules[i][colonne]!=null){// si la cellule de coordonnées données possède un jeton
                 i++;// alors on passe à la ligne suivante pour placr le jeton
             } else {
-                Cellules[i][colonne]+=unJeton;// sinon on ajoute le jeton
+                Cellules[i][colonne].JetonCourant=unJeton;// sinon on ajoute le jeton
             }
             if (Cellules[5][colonne]!=null){// si toute la colonne est remplie
                 return false;// on retourne faux, impossible d'ajouter de jeton
@@ -38,6 +38,7 @@ public class Grille {
             }
             return a==7;// sinon faux
         }
+        return false;
     }
 
     
@@ -52,11 +53,35 @@ public class Grille {
       
     }
    
-   public afficherGrilleSurConsole(){
+   public void afficherGrilleSurConsole(){
+       for (int i=0;i<5;i++){
+           for (int j=0;j<7;j++){
+               if (Cellules[i][j].presenceTrouNoir()==true){
+                   System.out.print(" T ");
+                } else if (Cellules[i][j].presenceDesintegrateur()==true) {
+                    System.out.print(" D ");
+                } else if (Cellules[i][j].lireCouleurDuJeton()=="Rouge") {
+                    System.out.print(" R ");
+                } else if (Cellules[i][j].lireCouleurDuJeton()=="Noir"){
+                    System.out.print(" N ");
+                } else if (Cellules[i][j].presenceDesintegrateur()==true && Cellules[i][j].presenceTrouNoir()==true){
+                    System.out.print(" TD ");
+                } else {
+                    System.out.print("   ");
+                }
+                
+            }
+            System.out.print("\n");
+        }
+    }
+        
+        
+
        
 
    
-   }
+   
+   
    public boolean celluleOccupée(int coordonneeLigne,int coordonneeColonne){
        if (Cellules[coordonneeLigne][coordonneeColonne]!=null){// regade si la cellule de coordonées indiquées est remplie
            return true;// si oui on retourne vrai
@@ -75,9 +100,8 @@ public class Grille {
    public String lireCouleurDuJeton(int coordonneeLigne,int coordonneeColonne){
        if (Cellules[coordonneeLigne][coordonneeColonne]!=null){// regarde si la cellule de coordonnées rentrées est remplie
         return Cellules[coordonneeLigne][coordonneeColonne].JetonCourant.lireCouleur();// si oui on retourne sa couleur
-       } else {
-           return "Opération impossible, la cellule ne posséde pas de jeton";// sinon on retourne que c'est impossible
-       }
+       } 
+       return "";
         
    } 
            
@@ -147,15 +171,19 @@ public class Grille {
        
    
    
-   public void tasserGrille(Jetons jetonCourant ){
-       for (int i=0;i<6;i++){
-           for (int j=0;j<7;j++){
-               if (jetonCourant.suprimerJeton(i,j)==true || jetonCourant.recupererJeton()==true){
-                   
+   public void tasserGrille(int cor1, int cor2 ){
+        if (Cellules[cor1][cor2].JetonCourant==null){ // regarde si la cellule est vide
+                      for (int i=cor1+1;i>=0;i++){// compteur qui correspond a la cellule au dessus de celle vide
+                        Cellule a=Cellules[i][cor2];// on stock le jeton de la cellule
+                        Cellules[i][cor2]=null;// on vide la cellule
+                        Cellules[i-1][cor2]=a;// on dépose le jeton dans la cellule du dessous
+                        
+                  } 
+                  
                }
            }
-       }
-   }
+       
+   
    
    public boolean colonneRemplie(){
        
@@ -188,7 +216,7 @@ public class Grille {
    }
    
    
-   public boolean suuprimerJeton(int coordLigne, int coordColonne){
+   public boolean supprimerJeton(int coordLigne, int coordColonne){
        if (Cellules[coordLigne][coordColonne]!=null){// regarde si la cellule de coordonnées données est remplie
        Cellules[coordLigne][coordColonne]=null;// si uoi on la vide
        return true;// et on indique que cela s'est bien passé avec vrai
@@ -196,15 +224,17 @@ public class Grille {
            return false;// sinon, la cellule est vide donc on ne peut rien suppiremer, on indique alors false
        }
    
-   public void recupérerJeton(int coordoLigne, int coordoColonne){
+   public Jetons recupérerJeton(int coordoLigne, int coordoColonne){
        if (Cellules[coordoLigne][coordoColonne]!=null){//on regarde si la cellule ne quesetion est pleine
-           String a=Cellules[coordoLigne][coordoColonne];// si oui alors on renvoie une referecne vers le jeton de la cellule
+           Cellule a=Cellules[coordoLigne][coordoColonne];// si oui alors on renvoie une referecne vers le jeton de la cellule
            Cellules[coordoLigne][coordoColonne]=null;// on vide alors la cellule
            
        }
        
        
+      return null; 
    }
+   
 }
        
 

@@ -30,7 +30,7 @@ public class Cellule {
         }
     }   
     public String lireCouleurDuJeton() {
-            return  JetonCourant.Couleur;//inique la couleur du jeton de la cellule
+            return  JetonCourant.lireCouleur();//inique la couleur du jeton de la cellule
     }
             
     public Jetons recupérerJeton(){
@@ -78,6 +78,7 @@ public class Cellule {
    public boolean recupererDesintegrateur(){
        if (presenceDesintegrateur()==true){//regarde s'il y a un desintegrateur
            desintegrateur=false;// le supprime
+           obtenirDesintegrateur(); // incrémente le nombre de desintegrateur
            return true;// tout s'est bien passé
        }
        return false;// il n'y en avait pas

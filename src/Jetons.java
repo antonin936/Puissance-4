@@ -11,7 +11,7 @@
 public class Jetons {
     String Couleur;// attribut
     
-    public void Jetons (String couleurchoisie) {
+    public Jetons (String couleurchoisie) {
         Couleur=couleurchoisie;// initialise la couleur du jeton avec le paramètre
    }
     
@@ -20,6 +20,10 @@ public class Jetons {
      * @return
      */
     public String lireCouleur() {
+        if (JetonCourant!=null){ // ne peut retourner une couleur uniquement s'il y a un jeton
         return Couleur;// renvoie la couleur du jeton
+        }
+        return "";
+        
     }
 }
