@@ -28,10 +28,9 @@ public class Superpuissance_4 {
             Joueur(nomJoueur1);
             Joueur(nomJoueur2);
             
-            System.out.println("Veuillez chosir votre couleur :"+"\n"+"1.Rouge"+"\n"+"2.Noir");
-            
             attribuerCouleursAuxJoueurs();
-            affecterCouleur();
+            initialiserPartie();
+            debuterPartie();
             
            
             
