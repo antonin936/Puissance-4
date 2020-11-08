@@ -33,12 +33,12 @@ public class Partie {
             for (int i=0;i<=5;i++){// place les 5 trous noirs
                 Random coordo1 = new Random();// coordonnees aux hasards pour placer les Trous noirs
                 Random coordo2 = new Random();
-                laGrille.Cellules[coordo1][coordo2].placerTrouNoir();// les place sur la grille
+                laGrille.placerTrouNoir(coordo1,coordo2);// les place sur la grille
             }
             for (int j=0;j<=3;j++){// place les 3 desintegrateurs 
                 Random coordon1 = new Random();// au hasard
                 Random coordon2 = new Random();
-                laGrille.Cellules[coordon1][coordon2].placerDesintegrateur();// sur la grille
+                laGrille.placerDesintegrateur(coordon1,coordon2);// sur la grille
             }
             for (int e=0;e<=1;e++){// place 2 desintegrateurs aux mêmes endroits que deux trous noirs
             laGrille.Cellules[coordo1][coordo2].placerDesintegrateur();
