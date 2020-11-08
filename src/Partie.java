@@ -51,9 +51,30 @@ public class Partie {
         
         
         
-            public String debuterPartie(){
-            
+            public void debuterPartie(){
+                System.out.println("Voulez vous jouer ? : "+"\n"+"Oui"+"\n"+"Non");
+                String reponseJoueur = sc.next();
+                
+                if (reponseJoueur=="Oui"){
+                    Grille laGrille= new Grille();// on initialie la grille
+                    while (etreGagnantePourJoueur()!=true && etreRemplie()!=true) {// on fait une boule while qui lance lma partie tant que celle ci n'est pas terminer, c'est à dire que la grille n'est pas remplie 
+                    // ou bien qu'un joueur n'a pas gagné
+                        for (int i =0;i>=0;i++) {// on fait une boucle corresondant aux nombres de coup qui est varaible
+                            System.out.println("Au joueur 1 de jouer : veuillez choisir la colonne dans laquelle déposer votre jeton :");
+                            int colonne1 = sc.nextInt();// permet au jouuer de rentrer la colonne dans laquelle jouer
+                            ajouterJetonDansColonne(joueurCourant.lireCouleur(),colonne1);// place l jeton dans la bonne colonne
+                            System.out.println("Au joueur 2 de jouer : veuillez choisir la colonne dans laquelle déposer votre jeton :");
+                            int colonne2 = sc.nextInt();// de même pour le joueur 2 
+                            ajouterJetonDansColonne(joueurCourant.lireCouleur(),colonne2);
+                        
+                        }  
+                    }
+                } else {
+                    System.out.println("Merci d'avoir jouer, à bientot j'espère pour de nouvelles aventures");
+                }
+                
             }
+    }
         
     
-}
+
