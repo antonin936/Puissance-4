@@ -32,17 +32,27 @@ public class Partie {
     public void initialiserPartie(){
             laGrille.viderGrille();// vide la grille
             for (int i=0;i<=5;i++){// place les 5 trous noirs
-                Random coordo1 = new Random();// coordonnees aux hasards pour placer les Trous noirs
-                Random coordo2 = new Random();
+                Random a = new Random();// générateur de nombres aléatoires pour placer les Trous noirs
+                Random b = new Random();
+                int coordo1 = a.nextInt(6);
+                int coordo2 = b.nextInt(7);
                 laGrille.placerTrouNoir(coordo1,coordo2);// les place sur la grille
             }
             for (int j=0;j<=3;j++){// place les 3 desintegrateurs 
-                Random coordon1 = new Random();// au hasard
-                Random coordon2 = new Random();
+                Random e = new Random();// générateur de nombres aléatoires
+                Random f = new Random();
+                int coordon1 = e.nextInt(6);// renvoie et stock un nombre aléatoire compris entre [0;6[
+                int coordon2 = f.nextInt(7);// renvoie et stock un nombre aléatoire entre [0;7[
                 laGrille.placerDesintegrateur(coordon1,coordon2);// sur la grille
             }
             for (int e=0;e<=1;e++){// place 2 desintegrateurs aux mêmes endroits que deux trous noirs
-            laGrille.Cellules[coordo1][coordo2].placerDesintegrateur();
+                for (int i=0;i<6;i++) {
+                    for (int j=0;j<7;j++) {
+                        if (Cellules[i][j].presenceTrouNoir()==true){
+                            laGrille.Cellules[i][j].placerDesintegrateur;
+                        }
+                    }
+                }
             }
             listeJoueur[0].ajouterJeton(listeJoueur[0].lireCouleur());// ajoute les  jetons de la bonne couleur au joueur 1
             listeJoueur[1].ajouterJeton(listeJoueur[1].lireCouleur());// ajoute les  jetons de la bonne couleur au joueur 2
