@@ -12,17 +12,18 @@ import java.util.Random;
 public class Partie {
     String listeJoueur []= new String[2];// tableau de 2 lignes
     Joueur joueurCourant;// attributs
-    Grille laGrille=new Grille();
-    Scanner sc = new Scanner(System.in);
+    Grille laGrille=new Grille();// initialisation de la grille
+    Scanner sc = new Scanner(System.in);// crétion de l 'objet de la classe scanner
     
     public Joueur attribuerCouleursAuxJoueurs() {
             
-            String CouleurJoueur1= sc.next();
-            String CouleurJoueur2= sc.next();
+            System.out.println("Veuillez choisir votre couleur : Rouge ou Noir");
+            String CouleurJoueur1= sc.next();// stock la couleur rentré par le joueur dans la variable CouleurJoueur1
+            
             if (CouleurJoueur1=="Rouge") {
-            System.out.println("Le joueur 1 est de la couleur Rouge"+"\n"+"Le joueur 2 est de la couleur Noir");
-        } else if (CouleurJoueur2=="Noir"){
-            System.out.println("Le joueur 1 est de la couleur Noir"+"\n"+"Le joueur 2 est de la couleur Rouge");
+                System.out.println("Le joueur 1 est de la couleur Rouge"+"\n"+"Le joueur 2 est de la couleur Noir");
+            } else if (CouleurJoueur1=="Noir"){
+                System.out.println("Le joueur 1 est de la couleur Noir"+"\n"+"Le joueur 2 est de la couleur Rouge");
             } 
         return null;    
     }
