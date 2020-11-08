@@ -56,22 +56,22 @@ public class Grille {
    public void afficherGrilleSurConsole(){
        for (int i=0;i<5;i++){
            for (int j=0;j<7;j++){
-               if (Cellules[i][j].presenceTrouNoir()==true){
-                   System.out.print(" T ");
-                } else if (Cellules[i][j].presenceDesintegrateur()==true) {
-                    System.out.print(" D ");
-                } else if (Cellules[i][j].lireCouleurDuJeton()=="Rouge") {
-                    System.out.print(" R ");
-                } else if (Cellules[i][j].lireCouleurDuJeton()=="Noir"){
-                    System.out.print(" N ");
-                } else if (Cellules[i][j].presenceDesintegrateur()==true && Cellules[i][j].presenceTrouNoir()==true){
-                    System.out.print(" TD ");
+               if (Cellules[i][j].presenceTrouNoir()==true){// regarde s'il y a un trou noir
+                   System.out.print(" T ");// si oui montre le trou noir avec un "T"
+                } else if (Cellules[i][j].presenceDesintegrateur()==true) {// regarde s'il y un desintegrateur
+                    System.out.print(" D ");// si oui affiche le desintegrateur avec "D"
+                } else if (Cellules[i][j].lireCouleurDuJeton()=="Rouge") {// regarde s'il y a un jeton de couleur rouge
+                    System.out.print(" R ");// si oui affiche le jeton avec "R"
+                } else if (Cellules[i][j].lireCouleurDuJeton()=="Noir"){// regarde s'il y a un jeton de couleur noir
+                    System.out.print(" N ");// si oui affiche le jeton avec "N"
+                } else if (Cellules[i][j].presenceDesintegrateur()==true && Cellules[i][j].presenceTrouNoir()==true){// regarde s'il y à la fois un desintegrateur et un trou noir
+                    System.out.print(" TD ");// si uoi affiche "TD"
                 } else {
-                    System.out.print("   ");
+                    System.out.print("   ");// sinon affiche que la case est vide
                 }
                 
             }
-            System.out.print("\n");
+            System.out.print("\n");// passe à la ligne suivante
         }
     }
         
@@ -146,28 +146,34 @@ public class Grille {
        }
        
        for (int i=0;i<6;){
-           int jetonsAlignesDi=0;
+           
        
            for (int j=0;j<7;j++){
-               if (Cellules[i][j]==Joueur1.lireCouleur()){ //&& Cellules[i+1][j+1]==Joueur1.lireCouleur() && Cellules[i+2][j+2]==Joueur1.lireCouleur() && Cellules[i+3][j+3]==Joueur1.lireCouleur()){
-                   // on test si la couleur du jeton correspond à celle du joueur
-                   jetonsAlignesDi+=1;// si oui on indente le compteur de jetons en diagonales
-                   i++;// on augemnte en même temps i et j pour se déplacer en diagonale
-               } else {
-                   jetonsAlignesDi=0;// sinon on le remet à 0 pour recommencer
-               }
+               if (Cellules[i][j]==Joueur1.lireCouleur() && Cellules[i+1][j+1]==Joueur1.lireCouleur() && Cellules[i+2][j+2]==Joueur1.lireCouleur() && Cellules[i+3][j+3]==Joueur1.lireCouleur()){
+                   return true;// on regarde si les 4 jetons de la diagonale montante vers la droite sont alignés, si oui on retourne vrai
                
-               if (jetonsAlignesDi==4){
-                   return true; 
-                        
-                        // si 4 jetons de même couleur sont alignés on retourne vrai
-               }
-            }
+                } else if (Cellules[i][j]==Joueur1.lireCouleur() && Cellules[i-1][j-1]==Joueur1.lireCouleur() && Cellules[i-2][j-2]==Joueur1.lireCouleur() && Cellules[i-3][j-3]==Joueur1.lireCouleur()){
+                    return true;// on regarde si les 4 jetons de la diagonale descendante vers la gauche sont alignés, si oui on retourne vrai
+               
+               
+                } else if (Cellules[i][j]==Joueur1.lireCouleur() && Cellules[i+1][j-1]==Joueur1.lireCouleur() && Cellules[i+2][j-2]==Joueur1.lireCouleur() && Cellules[i+3][j-3]==Joueur1.lireCouleur()){       
+                    return true;// on regarde si les 4 jetons de la diagonale montante vers la gauche sont alignés, si oui on retourne vrai
+               
+               
+                } else if (Cellules[i][j]==Joueur1.lireCouleur() && Cellules[i-1][j+1]==Joueur1.lireCouleur() && Cellules[i-2][j+2]==Joueur1.lireCouleur() && Cellules[i-3][j+3]==Joueur1.lireCouleur()){
+                    return true;// on regarde si les 4 jetons de la diagonale descendante vers la droite sont alignés, si oui on retourne vrai
+                
+                } else {
+                    return false;// si aucun des cas n'est vérifié alors on retourne faux, pas de diagonale gagnante
+                }
+                
            
        }
-       return false;
        
-    }
+       
+        }
+       return false;
+       }
        
    
    

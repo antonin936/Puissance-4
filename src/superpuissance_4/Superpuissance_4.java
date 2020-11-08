@@ -19,18 +19,18 @@ public class Superpuissance_4 {
         
             Scanner sc = new Scanner(System.in);
             
-            System.out.println("Veuillez choisir le nom du joueur 1 :");
-            String nomJoueur1 = sc.next();
+            System.out.println("Veuillez choisir le nom du joueur 1 :");// message de début
+            String nomJoueur1 = sc.next();// stock le nom rentré dans nomJoueur1
             
             System.out.println("Veuillez choisir le nom du joueur 2 :");
-            String nomJoueur2 = sc.next();
+            String nomJoueur2 = sc.next();// stock le nom rentré dans nomJoueur2
             
-            Joueur(nomJoueur1);
+            Joueur(nomJoueur1);// rentre les noms des joueurs dans les paramètres
             Joueur(nomJoueur2);
             
-            attribuerCouleursAuxJoueurs();
-            initialiserPartie();
-            debuterPartie();
+            attribuerCouleursAuxJoueurs();// attribue les couleurs aux joueurs
+            initialiserPartie();// initialise la partie
+            debuterPartie();// commence la partie
             
            
             

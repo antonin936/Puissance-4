@@ -20,9 +20,9 @@ public class Cellule {
         desintegrateur = desintegrateur1;
         
         }
-    public boolean affecterJeton(Jetons unJeton){
+    public boolean affecterJeton(Jetons jeton2){
         if (JetonCourant == null){// regarde si le joueur ne possède pas de jeton 
-            JetonCourant = unJeton;// et ajoute le jeton en paramètre de la cellule
+            JetonCourant = jeton2;// et ajoute le jeton en paramètre de la cellule
             return true;// retourne vrai si cela s'est bien passé
         }
         else{
@@ -30,7 +30,7 @@ public class Cellule {
         }
     }   
     public String lireCouleurDuJeton() {
-            return  JetonCourant.lireCouleur();//inique la couleur du jeton de la cellule
+            return  JetonCourant.lireCouleur();//indique la couleur du jeton de la cellule
     }
             
     public Jetons recupérerJeton(){

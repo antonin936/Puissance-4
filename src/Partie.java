@@ -20,10 +20,12 @@ public class Partie {
             System.out.println("Veuillez choisir votre couleur : Rouge ou Noir");
             String CouleurJoueur1= sc.next();// stock la couleur rentré par le joueur dans la variable CouleurJoueur1
             
-            if (CouleurJoueur1=="Rouge") {
+            if (CouleurJoueur1=="Rouge") {// si le joueur rentre la couleur rouge
                 System.out.println("Le joueur 1 est de la couleur Rouge"+"\n"+"Le joueur 2 est de la couleur Noir");
-            } else if (CouleurJoueur1=="Noir"){
+            // on affiche le message
+            } else if (CouleurJoueur1=="Noir"){// si le joueur rentre la couleur noir
                 System.out.println("Le joueur 1 est de la couleur Noir"+"\n"+"Le joueur 2 est de la couleur Rouge");
+            // on affiche ce message
             } 
         return null;    
     }
@@ -34,8 +36,8 @@ public class Partie {
             for (int i=0;i<=5;i++){// place les 5 trous noirs
                 Random a = new Random();// générateur de nombres aléatoires pour placer les Trous noirs
                 Random b = new Random();
-                int coordo1 = a.nextInt(6);
-                int coordo2 = b.nextInt(7);
+                int coordo1 = a.nextInt(6);// renvoie et stock un nombre aléatoire compris entre [0;6[
+                int coordo2 = b.nextInt(7);// renvoie et stock un nombre aléatoire compris entre [0;7[
                 laGrille.placerTrouNoir(coordo1,coordo2);// les place sur la grille
             }
             for (int j=0;j<=3;j++){// place les 3 desintegrateurs 
@@ -48,8 +50,8 @@ public class Partie {
             for (int e=0;e<=1;e++){// place 2 desintegrateurs aux mêmes endroits que deux trous noirs
                 for (int i=0;i<6;i++) {
                     for (int j=0;j<7;j++) {
-                        if (Cellules[i][j].presenceTrouNoir()==true){
-                            laGrille.Cellules[i][j].placerDesintegrateur;
+                        if (Cellules[i][j].presenceTrouNoir()==true){// s'il y a un trou noir
+                            laGrille.Cellules[i][j].placerDesintegrateur;// on place un desintegrateur au même endroit
                         }
                     }
                 }
@@ -63,10 +65,10 @@ public class Partie {
         
         
             public void debuterPartie(){
-                System.out.println("Voulez vous jouer ? : "+"\n"+"Oui"+"\n"+"Non");
-                String reponseJoueur = sc.next();
+                System.out.println("Voulez vous jouer ? : "+"\n"+"Oui"+"\n"+"Non");// message de début
+                String reponseJoueur = sc.next();// stock la reponse du joueur dans reponse joueur
                 
-                if (reponseJoueur=="Oui"){
+                if (reponseJoueur=="Oui"){// si le joueur est d'accord
                     Grille laGrille= new Grille();// on initialie la grille
                     while (etreGagnantePourJoueur()!=true && etreRemplie()!=true) {// on fait une boule while qui lance lma partie tant que celle ci n'est pas terminer, c'est à dire que la grille n'est pas remplie 
                     // ou bien qu'un joueur n'a pas gagné
@@ -80,7 +82,7 @@ public class Partie {
                         
                         }  
                     }
-                } else {
+                } else {// sinon message de fin
                     System.out.println("Merci d'avoir jouer, à bientot j'espère pour de nouvelles aventures");
                 }
                 
